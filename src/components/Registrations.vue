@@ -5,7 +5,7 @@
             <h5>Total: {{ total }}</h5>
         </div>
         <hr>
-        <div class="row" v-for="registration in registrations">
+        <div class="row" v-for="registration in registrations" v-bind:key="registration.id">
             <h4>{{ registration.name }}</h4>
             <span @click="unregister(registration)">(Unregister)</span>
             <div class="date">{{ registration.date }}</div>
@@ -14,17 +14,22 @@
 </template>
 
 <script>
+    import {mapGetters} from 'vuex';
+
     export default {
-        props: ['registrations'],
         methods: {
             unregister(registration) {
-                this.$emit('userUnregistered', registration);
-            }
+                const user = this.$store.state.users.find(user => user.id === registration.userId)
+                user.registered = false;
+
+                this.$store.state.registrations.splice(this.$store.state.registrations.indexOf(registration),1);
+            },
         },
         computed: {
-            total() {
-                return this.registrations.length;
-            }
+            ...mapGetters({
+                registrations:'registrations',
+                total:'total',
+            }),
         }
     }
 </script>
