@@ -26,9 +26,32 @@ const store = new Vuex.Store({
       return state.registrations.length;
     }
   },
+
   mutations:{
-    // registe
-    // registrations:
+    register(state,id){
+      const user  = state.users.find(user=>user.id === id);
+      user.registered = true;
+
+      const date = new Date;
+      const registration = {
+        ...user,
+        date: date.getMonth() + '/' + date.getDay()
+      }
+      
+      state.registrations.push(registration)
+    },
+
+    unregister(state,registrationId){
+
+      const user = state.users.find(user=>user.id===registrationId);
+      user.registered=false;
+
+      const registration = state.registrations.find(registration=>registration.id===registrationId)
+      state.registrations.splice(state.registrations.indexOf(registration),1);
+
+    } 
+  
+    
   },
 })
 

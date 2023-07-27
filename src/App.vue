@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     
-    <app-registration  ></app-registration>
+    <app-registration></app-registration>
 
-    <app-registrations ></app-registrations>
+    <app-registrations></app-registrations>
   
   </div>
 </template>
@@ -14,26 +14,12 @@
 
 export default {
     
-    
-    // methods: {
-    //   // userRegistered(user) {
-    //   //   const date = new Date;
-
-    //   //   // this.registrations.push({userId: user.id, name: user.name, date: date.getMonth() + '/' + date.getDay()})
-    //   // },
-    //   //   userUnregistered(registration) {
-    //   //     const user = this.users.find(user => {
-    //   //         return user.id == registration.userId;
-    //   //     });
-    //   //     user.registered = false;
-    //   //     this.registrations.splice(this.registrations.indexOf(registration), 1);
-
-    //   //   }
-    // },
+ 
     components: {
         appRegistration: Registration,
         appRegistrations: Registrations,
-    }
+    },
+
 }
 </script>
 
