@@ -21,8 +21,8 @@
 
         methods: {
             registerUser(user) {
-
-                this.$store.commit('register',user.id)
+                this.$store.dispatch('register',{userId:user.id})
+                // this.$store.commit('register',user.id)
 
             }
         }

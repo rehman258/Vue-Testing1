@@ -53,6 +53,16 @@ const store = new Vuex.Store({
   
     
   },
+  actions:{
+
+    register(context,payload){
+      context.commit('register',payload.userId);
+    },
+    unregister(context,payload){
+      context.commit('unregister',payload.userId);
+    }
+
+  }
 })
 
 export default store
